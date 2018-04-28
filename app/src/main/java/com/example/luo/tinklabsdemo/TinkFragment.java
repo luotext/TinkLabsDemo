@@ -62,7 +62,7 @@ public class TinkFragment extends Fragment {
         Random random = new Random();
         for (int i = 0; i < icons.length; i++) {
             DemoTypeBean more = new DemoTypeBean();
-            more.pic = this.getActivity().getResources().getDrawable(icons[i]);
+            more.pic = icons[i];
             more.name = "food" + (i + 1) + "图文描述";
             more.type = random.nextInt(2);
             mData.add(more);
@@ -117,7 +117,7 @@ public class TinkFragment extends Fragment {
             List<DemoTypeBean> moreDatas = new ArrayList<DemoTypeBean>();
             for (int i = 0; i < icons.length; i++) {
                 DemoTypeBean more = new DemoTypeBean();
-                more.pic = this.getActivity().getResources().getDrawable(icons[i]);
+                more.pic = icons[i];
                 more.name = "food" + (i + 1) + "图文描述";
                 more.type = random.nextInt(2);
                 moreDatas.add(more);
