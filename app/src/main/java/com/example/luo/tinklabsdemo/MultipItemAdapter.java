@@ -23,6 +23,7 @@ public class MultipItemAdapter extends RecyclerView.Adapter {
     public static final int TYPE_TEXT_IMAGE = 1;
     private List<DemoTypeBean> mData;
     private Context mContext;
+    protected boolean isScrolling = false;
 
     public MultipItemAdapter(Context mContext, List<DemoTypeBean> data) {
         this.mContext = mContext;
@@ -48,9 +49,17 @@ public class MultipItemAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof OnlyImageHolder) {
-            ((OnlyImageHolder) holder).itemImg.setImageResource(mData.get(position).pic);
+            if (!isScrolling) {
+                ((OnlyImageHolder) holder).itemImg.setImageResource(mData.get(position).pic);
+            } else {
+                ((OnlyImageHolder) holder).itemImg.setImageResource(R.mipmap.demo_pic_1);
+            }
         } else if (holder instanceof TextImageHolder) {
-            ((TextImageHolder) holder).itemImg.setImageResource(mData.get(position).pic);
+            if (!isScrolling) {
+                ((TextImageHolder) holder).itemImg.setImageResource(mData.get(position).pic);
+            } else {
+                ((TextImageHolder) holder).itemImg.setImageResource(R.mipmap.demo_pic_2);
+            }
             ((TextImageHolder) holder).itemContent.setText(mData.get(position).name);
         }
     }
@@ -96,5 +105,9 @@ public class MultipItemAdapter extends RecyclerView.Adapter {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public void setScrolling(boolean scrolling) {
+        isScrolling = scrolling;
     }
 }

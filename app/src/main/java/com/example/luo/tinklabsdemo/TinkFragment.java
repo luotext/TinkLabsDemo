@@ -103,6 +103,17 @@ public class TinkFragment extends Fragment {
                     onLoadMore();
                 }
             }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == 0) { // 滚动静止时才加载图片资源，极大提升流畅度
+                    ada.setScrolling(false);
+                    ada.notifyDataSetChanged(); // notify调用后onBindViewHolder会响应调用
+                } else {
+                    ada.setScrolling(true);
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
         });
         mRvList.setAdapter(ada);
     }
