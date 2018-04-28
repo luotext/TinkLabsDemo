@@ -48,9 +48,9 @@ public class MultipItemAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof OnlyImageHolder) {
-            ((OnlyImageHolder) holder).itemImg.setImageDrawable(mData.get(position).pic);
+//            ((OnlyImageHolder) holder).itemImg.setImageDrawable(mData.get(position).pic);
         } else if (holder instanceof TextImageHolder) {
-            ((TextImageHolder) holder).itemImg.setImageDrawable(mData.get(position).pic);
+//            ((TextImageHolder) holder).itemImg.setImageDrawable(mData.get(position).pic);
             ((TextImageHolder) holder).itemContent.setText(mData.get(position).name);
         }
     }
